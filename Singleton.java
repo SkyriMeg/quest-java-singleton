@@ -1,27 +1,32 @@
 public class Singleton {
 
-    private static Singleton instance;
+  private static Singleton instance;
 
-    // TODO 1 : fix singleton bad implementation
-    public static Singleton getInstance() {
-        return new Singleton();
+  // OK : fix singleton bad implementation
+  public static Singleton getInstance() {
+    if (instance == null) {
+      instance = new Singleton();
     }
+    return instance;
+  }
 
-    private Bank bank;
+  private Singleton() {}
 
-    public void openAccount(int value) {
-        bank = new Bank(value);
-    }
+  private Bank bank;
 
-    public void deposit(int value) {
-        bank.setTotal(bank.getTotal() + value);
-    }
+  public void openAccount(int value) {
+    bank = new Bank(value);
+  }
 
-    public void withdraw(int value) {
-        bank.setTotal(bank.getTotal() - value);
-    }
+  public void deposit(int value) {
+    bank.setTotal(bank.getTotal() + value);
+  }
 
-    public Bank getBank() {
-        return bank;
-    }
+  public void withdraw(int value) {
+    bank.setTotal(bank.getTotal() - value);
+  }
+
+  public Bank getBank() {
+    return bank;
+  }
 }
